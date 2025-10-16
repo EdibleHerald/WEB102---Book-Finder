@@ -20,12 +20,16 @@ function App() {
         <h1>Book Finder</h1>
         <h3>Find your next book here!</h3>
         {/* Include component here */}
+
+        <button>Generate!</button>
       </div>
       
       <div className="banList">
         <div>
           <h2>Ban List</h2>
           <p>Attributes here are banned! Click them to unban them.</p>
+          <p>hello</p>
+          <p>hello again</p>
         </div>
       </div>
       
