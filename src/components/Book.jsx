@@ -1,5 +1,5 @@
 
-function book(json,handleEbook,handleCate,handleCoun,handleLang){
+function Book({json}){
 
     return(
         <>
@@ -15,25 +15,25 @@ function book(json,handleEbook,handleCate,handleCoun,handleLang){
 
             <div className="bookAttributes">
                 {/* isEbook,category,country,language */}
-                <button onClick={handleEbook}>
+                <button >
                     <span>
-                        {json.isEbook ? "Ebook" : "Physical Book"}
+                        {json.isEbook ? "Ebook" : "No Ebook"}
                     </span>
                 </button>
 
-                <button onClick={handleCate}>
+                <button >
                     <span>
                         {json.category}
                     </span>
                 </button>
 
-                <button onClick={handleCoun}>
+                <button >
                     <span>
-                        {json.country}
+                        Country: {json.country}
                     </span>
                 </button>
 
-                <button onClick={handleLang}>
+                <button>
                     <span>
                         Language: {json.language}
                     </span>
@@ -41,7 +41,7 @@ function book(json,handleEbook,handleCate,handleCoun,handleLang){
             </div>
 
             <div className="bookImgDiv">
-
+                <img height={300} width={300} src={json.image}></img>
             </div>
         </>
     )

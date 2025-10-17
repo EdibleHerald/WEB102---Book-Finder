@@ -46,19 +46,21 @@ function getData(jsonData){
     if(jsonData && typeof jsonData === "object"){
         // Checks if jsonData exists and is an object
         const link = jsonData?.accessInfo?.pdf?.isAvailable ? jsonData?.accessInfo?.pdf?.acsTokenLink : null;
-        const authorArr = jsonData?.volumeInfo?.authors;
-        const categoryArr = jsonData?.volumeInfo?.categories;
-
+        const authorArr = jsonData?.volumeInfo?.authors ?? ["Author not found"];
+        const categoryArr = jsonData?.volumeInfo?.categories ?? ["Category not found"];
+        
+        console.log("This is authArr: "+authorArr);
+        console.log("This is categoryArr: "+categoryArr);
         let singleAuthor=null;
         if(authorArr.length > 0){
             // Chooses first author returned to save space when displayed
-            singleAuthor = jsonData?.volumeInfo?.authors[0];
+            singleAuthor = authorArr[0]
         }
 
         let singleCategory=null;
         if(categoryArr.length > 0){
             // Chooses the first category to reduce complexity
-            singleCategory = jsonData?.volumeInfo?.categories[0];
+            singleCategory = categoryArr[0];
         }
 
         defaultObject = {
@@ -70,12 +72,13 @@ function getData(jsonData){
             image: jsonData?.volumeInfo?.imageLinks?.small ??
             jsonData?.volumeInfo?.imageLinks?.medium ??
             jsonData?.volumeInfo?.imageLinks?.thumbnail ??
-            "fallback.jpg", // Tries getting multiple possible images
+            "./fallback.png", // Tries getting multiple possible images
             publishedDate: jsonData?.volumeInfo?.publishedDate,
             averageRating: jsonData?.volumeInfo?.averageRating,
             saleability: jsonData?.saleInfo?.saleability,
             canonicalVolumeLink: jsonData?.volumeInfo?.canonicalVolumeLink,
-            acsTokenLink: link
+            acsTokenLink: link,
+            id: jsonData?.id
         }
 
     }
