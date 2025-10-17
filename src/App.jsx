@@ -6,6 +6,7 @@ const ACCESS_KEY = import.meta.env.VITE_ACCESS_KEY;
 
 function App() {
   const [count, setCount] = useState(0)
+  
 
   return (
    
@@ -29,7 +30,6 @@ function App() {
           <h2>Ban List</h2>
           <p>Attributes here are banned! Click them to unban them.</p>
           <p>hello</p>
-          <p>hello again</p>
         </div>
       </div>
       
