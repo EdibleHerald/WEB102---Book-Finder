@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import './App.css'
+import loader from '/12-dots-scale-rotate.svg'
 import Book from "./components/Book"
 import getData from "./components/getData"
 import MiniBook from "./components/miniBook"
@@ -121,7 +122,8 @@ function App() {
         <h1>Book Finder</h1>
         <h3>Find your next book here!</h3>
         {/* Include component here */}
-        <Book json = {book}/>
+        {loading ? <div className='loadDiv'><img className="loading" src={loader}/></div> :<Book json = {book}/>}
+        
         <button onClick={() =>{makeQuery(); setLoading(1)} } disabled={loading==1 ? true : false}><span>Generate!</span></button>
       </div>
       

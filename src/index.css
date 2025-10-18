@@ -104,11 +104,12 @@ h1 {
   grid-template: 0.10fr 1fr / 1fr;
   max-height:75%;
   height:75%;
-  content-visibility: auto;
   border:2px solid var(--borderScheme);
+  overflow-y: hidden;
+  overflow-x: hidden;
 }
 .prevBookDiv .bookScrollDiv{
-  overflow: scroll;
+  overflow-y: scroll;
   overflow-x:hidden;
   scroll-behavior:smooth;
   scrollbar-width: thin;
@@ -204,4 +205,28 @@ button:active span{
   align-content: center;
   border: 2px solid var(--borderScheme); 
 
+}
+
+@keyframes load{
+  from{
+    transform: rotate(0deg);
+  }
+  to{
+    transform: rotate(360deg);
+  }
+}
+
+.loadDiv{
+  justify-self: center;
+  align-self: center;
+  padding:10rem;
+  width:150px;
+  height:150px;
+  animation: load 1000ms linear;
+  animation-iteration-count: infinite;
+}
+
+.loading{
+  justify-content: center;
+  font-size: 5rem;
 }
