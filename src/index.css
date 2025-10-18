@@ -89,8 +89,9 @@ h1 {
     font-size: 0.75rem;
   }
 
-  .prevBooks{
+  .prevBookDiv{
     overflow-x: scroll;
+    max-height: 20%;
   }
   .banList{
     overflow-y: scroll;
@@ -98,16 +99,27 @@ h1 {
   }
 }
 
-.prevBooks{
-  display:flex;
-  flex-direction: column;
+.prevBookDiv{
+  display:grid;
+  grid-template: 0.10fr 1fr / 1fr;
   max-height:75%;
   height:75%;
   content-visibility: auto;
+  border:2px solid var(--borderScheme);
+}
+.prevBookDiv .bookScrollDiv{
   overflow: scroll;
   overflow-x:hidden;
   scroll-behavior:smooth;
   scrollbar-width: thin;
+}
+.prevBookDiv h4{
+  justify-self: center;
+  align-self: center;
+  align-content: center;
+  margin: 0;
+  height:100%;
+  width: 100%;
   border:2px solid var(--borderScheme);
 }
 
@@ -191,4 +203,5 @@ button:active span{
   justify-content: center;
   align-content: center;
   border: 2px solid var(--borderScheme); 
+
 }

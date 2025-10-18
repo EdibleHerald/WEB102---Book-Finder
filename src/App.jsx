@@ -20,12 +20,14 @@ function App() {
       averageRating: null,
       saleability:null,
       canonicalVolumeLink: null,
-      acsTokenLink:null
+      acsTokenLink:null,
+      country:null
   })
   const [prevBook,setPrevBook] = useState([]);
   const [seenVol,setSeenVol] = useState([]);
   const [startIndex,setStartIndex] = useState(0);
   const [currIndex,setCurrIndex] = useState(0);
+  const [loading, setLoading] = useState(0);
   const maxResults = 10;
   
   const makeQuery = async ()=>{
@@ -90,6 +92,7 @@ function App() {
     
 
     setBook(object);
+    setLoading(0);
 
     return object.id;
   }
@@ -104,11 +107,14 @@ function App() {
    
     <div className="wholePage">
       {/*Plan: 1 row / 3 column grid with gap.*/}
-      <div className="prevBooks" id='prev'>
+      <div className="prevBookDiv" id='prev'>
         <h4>Previous books:</h4> 
-        {prevBook.map((item)=>(
-          <MiniBook object = {item}/>
-        ))}
+        <div className='bookScrollDiv'>
+            {prevBook.map((item)=>(
+            <MiniBook object = {item}/>
+          ))}
+        </div>
+        
       </div>
       
       <div className="mainContent">
@@ -116,7 +122,7 @@ function App() {
         <h3>Find your next book here!</h3>
         {/* Include component here */}
         <Book json = {book}/>
-        <button onClick={() =>{makeQuery()}}><span>Generate!</span></button>
+        <button onClick={() =>{makeQuery(); setLoading(1)} } disabled={loading==1 ? true : false}><span>Generate!</span></button>
       </div>
       
       <div className="banList">

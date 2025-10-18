@@ -40,7 +40,8 @@ function getData(jsonData){
         averageRating: null,
         saleability:null,
         canonicalVolumeLink: null,
-        acsTokenLink:null
+        acsTokenLink:null,
+        country:null
     }
 
     if(jsonData && typeof jsonData === "object"){
@@ -78,7 +79,8 @@ function getData(jsonData){
             saleability: jsonData?.saleInfo?.saleability,
             canonicalVolumeLink: jsonData?.volumeInfo?.canonicalVolumeLink,
             acsTokenLink: link,
-            id: jsonData?.id
+            id: jsonData?.id,
+            country:jsonData?.saleInfo?.country
         }
 
     }
