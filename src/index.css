@@ -1,4 +1,5 @@
 :root {
+  --borderScheme:white;
   
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -43,7 +44,9 @@ h1 {
 }
 
 @media (prefers-color-scheme: light) {
+  
   :root {
+    --borderScheme:black;
     color: #213547;
     background-color: #ffffff;
   }
@@ -105,13 +108,13 @@ h1 {
   overflow-x:hidden;
   scroll-behavior:smooth;
   scrollbar-width: thin;
-  border:2px solid white;
+  border:2px solid var(--borderScheme);
 }
 
 .banList{
   display: flex;
   height:85%;
-  border:2px solid white;
+  border:2px solid var(--borderScheme);
 }
 
 .mainContent{
@@ -176,4 +179,16 @@ button:active span{
 }
 .bookAttributes button:active span{
   transform: translateY(-2px);
+}
+
+.bookDiv img{
+  margin:1rem;
+}
+
+.prevBook{
+  display:block;
+  padding:0.5rem;
+  justify-content: center;
+  align-content: center;
+  border: 2px solid var(--borderScheme); 
 }

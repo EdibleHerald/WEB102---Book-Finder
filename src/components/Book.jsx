@@ -2,7 +2,7 @@
 function Book({json}){
 
     return(
-        <>
+        <div className="bookDiv">
             {/* {/* I need a few things:} */}
             {/* 1.) Div for title and author */}
             {/* 2.) divs for attributes */}
@@ -43,7 +43,7 @@ function Book({json}){
             <div className="bookImgDiv">
                 <img height={300} width={300} src={json.image}></img>
             </div>
-        </>
+        </div>
     )
 }
 

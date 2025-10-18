@@ -2,6 +2,7 @@ import { useState } from 'react'
 import './App.css'
 import Book from "./components/Book"
 import getData from "./components/getData"
+import MiniBook from "./components/miniBook"
 
 const ACCESS_KEY = import.meta.env.VITE_ACCESS_KEY;
 
@@ -21,6 +22,7 @@ function App() {
       canonicalVolumeLink: null,
       acsTokenLink:null
   })
+  const [prevBook,setPrevBook] = useState([]);
   const [seenVol,setSeenVol] = useState([]);
   const [startIndex,setStartIndex] = useState(0);
   const [currIndex,setCurrIndex] = useState(0);
@@ -77,18 +79,36 @@ function App() {
     console.log(tempIndex);
     const object = await getData(jsonObject);
     
+    // Before setting new object, take previous one to be added to 
+    // "previous books" section
+    // let tempPrevBook = prevBook;
+    // tempPrevBook.push(book);
+    if(seenVol.length > 0){
+      setPrevBook((oldArray)=>[...oldArray,book]);
+      console.log(prevBook);
+    }
+    
+
     setBook(object);
 
     return object.id;
   }
 
+  // const bookToPrev = (object)=>{
+  //   // takes previous object data and makes new smaller element for "previous books" section
+  //   let documentItem = document.getElementById('prev');
+  //   document.appendChild()
+  // }
+
   return (
    
     <div className="wholePage">
       {/*Plan: 1 row / 3 column grid with gap.*/}
-      <div className="prevBooks">
+      <div className="prevBooks" id='prev'>
         <h4>Previous books:</h4> 
-
+        {prevBook.map((item)=>(
+          <MiniBook object = {item}/>
+        ))}
       </div>
       
       <div className="mainContent">
